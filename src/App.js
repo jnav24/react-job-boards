@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import {isLoggedIn} from "./helpers/auth";
+import {isLoggedIn} from './helpers/auth';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import JobBoard from './components/JobBoard';
 
 export default class App extends Component {
     state = {
@@ -8,10 +10,17 @@ export default class App extends Component {
 
     render() {
         return (
-            <div>
-                Hello World
-                <pre>{this.state.loggedIn}</pre>
-            </div>
+            <Router ref={(router) => this.router = router}>
+                <div>
+                    <section className="section">
+                        <div className="container">
+                            <Switch>
+                                <Route exact path="/" component={JobBoard}></Route>
+                            </Switch>
+                        </div>
+                    </section>
+                </div>
+            </Router>
         );
     }
 }
