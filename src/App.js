@@ -10,9 +10,15 @@ export default class App extends Component {
         loggedIn: isLoggedIn(),
     };
 
-    handleLogout() {
-        console.log('logging out');
-    }
+    handleLogin = () => {
+        this.setState({ loggedIn: true });
+        this.router.history.push('/');
+    };
+
+    handleLogout = () => {
+        this.setState({ loggedIn: false });
+        this.router.history.push('/');
+    };
 
     render() {
         return (
