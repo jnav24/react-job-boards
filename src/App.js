@@ -9,11 +9,15 @@ export default class App extends Component {
         loggedIn: isLoggedIn(),
     };
 
+    handleLogout() {
+        console.log('logging out');
+    }
+
     render() {
         return (
             <Router ref={(router) => this.router = router}>
                 <div>
-                    <NavBar></NavBar>
+                    <NavBar loggedIn={this.state.loggedIn} onLogout={this.handleLogout}></NavBar>
 
                     <section className="section">
                         <div className="container">
