@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import JobBoard from './components/JobBoard';
 import NavBar from './components/NavBar';
 import LoginForm from './components/LoginForm';
+import JobDetail from './components/JobDetail';
 
 export default class App extends Component {
     state = {
@@ -31,6 +32,7 @@ export default class App extends Component {
                             <Switch>
                                 <Route exact path="/" component={JobBoard}></Route>
                                 <Route path="/login" render={() => <LoginForm onLogin={this.handleLogin} />}></Route>
+                                <Route path="/jobs/:jobId" component={JobDetail}></Route>
                             </Switch>
                         </div>
                     </section>
