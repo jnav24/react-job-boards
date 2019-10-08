@@ -19,7 +19,7 @@ const NavBar = (props) => {
         <nav className="navbar">
             <div className="navbar-start">
                 <Link className="navbar-item" to="/">Home</Link>
-                { props.loggedIn ? loggedOutContent : loggedInContent }
+                { props.loggedIn ? loggedInContent : loggedOutContent }
             </div>
         </nav>
     );
