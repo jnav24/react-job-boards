@@ -11,7 +11,7 @@ const NavBar = (props) => {
 
     const loggedOutContent = (
         <>
-            <Link className="navbar-item" to="/">Login</Link>
+            <Link className="navbar-item" to="/login">Login</Link>
         </>
     );
 

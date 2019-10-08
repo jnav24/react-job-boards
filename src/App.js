@@ -3,6 +3,7 @@ import {isLoggedIn} from './helpers/auth';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import JobBoard from './components/JobBoard';
 import NavBar from './components/NavBar';
+import LoginForm from './components/LoginForm';
 
 export default class App extends Component {
     state = {
@@ -23,6 +24,7 @@ export default class App extends Component {
                         <div className="container">
                             <Switch>
                                 <Route exact path="/" component={JobBoard}></Route>
+                                <Route path="/login" render={() => <LoginForm onLogin={this.handleLogin} />}></Route>
                             </Switch>
                         </div>
                     </section>
