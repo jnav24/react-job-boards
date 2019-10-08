@@ -1,6 +1,8 @@
 const accessTokenKey = 'accessToken';
 const serverUrl = 'http://localhost:9000';
 
+export const getAccessToken = () => localStorage.getItem(accessTokenKey);
+
 export const isLoggedIn = () => !!localStorage.getItem(accessTokenKey);
 
 export const login = async (email, password) => {
@@ -21,3 +23,5 @@ export const login = async (email, password) => {
         return false;
     }
 };
+
+export const logout = () => localStorage.removeItem(accessTokenKey);
