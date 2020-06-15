@@ -32,11 +32,11 @@ export default class App extends Component {
                     <section className="section">
                         <div className="container">
                             <Switch>
-                                <Route exact path="/" component={JobBoard}></Route>
-                                <Route path="/companies/:companyId" component={CompanyDetail}></Route>
-                                <Route path="/jobs/new" component={JobForm}></Route>
-                                <Route path="/jobs/:jobId" component={JobDetail}></Route>
-                                <Route path="/login" render={() => <LoginForm onLogin={this.handleLogin} />}></Route>
+                                <Route exact path="/" component={JobBoard} />
+                                <Route path="/companies/:companyId" component={CompanyDetail} />
+                                <Route path="/jobs/new" component={JobForm} />
+                                <Route path="/jobs/:jobId" component={JobDetail} />
+                                <Route path="/login" render={() => <LoginForm onLogin={this.handleLogin} />} />
                             </Switch>
                         </div>
                     </section>
