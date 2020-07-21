@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { loadJob } from '../helpers/requests';
 
 export default class JobDetail extends Component {
     jobId = () => this.props.match.params;
@@ -16,26 +18,18 @@ export default class JobDetail extends Component {
         },
     };
 
-    componentDidMount = () => {
-        this.setState({
-            job: {
-                id: 'job1',
-                title: 'Job 1',
-                company: {
-                    id: 'company1',
-                    name: 'Company A',
-                    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-                },
-                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-            }
-        });
+    componentDidMount = async () => {
+        const { jobId } = this.props.match.params;
+        this.setState({ job: await loadJob(jobId) });
     };
 
     render() {
         return (
             <div>
                 <h1 className="title">{this.state.job.title}</h1>
-                <h2 className="subtitle">{this.state.job.company.name}</h2>
+                <h2 className="subtitle">
+                    <Link to={`/companies/${this.state.job.company.id}`}>{this.state.job.company.name}</Link>
+                </h2>
 
                 <div className="description">
                     {this.state.job.description}
