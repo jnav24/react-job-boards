@@ -7,7 +7,7 @@ export const isLoggedIn = () => !!localStorage.getItem(accessTokenKey);
 
 export const login = async (email, password) => {
     try {
-        const response = await fetch(serverUrl, {
+        const response = await fetch(`${serverUrl}/login`, {
             method: 'POST',
             headers: {'content-type': 'application/json'},
             body: JSON.stringify({ email, password }),
