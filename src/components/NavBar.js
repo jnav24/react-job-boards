@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const NavBar = (props) => {
     const loggedInContent = (
         <>
-            <Link className="navbar-item" to="/">Post a Job</Link>
+            <Link className="navbar-item" to="/jobs/new">Post a Job</Link>
             <Link className="navbar-item" to="/" onClick={props.onLogout}>Logout</Link>
         </>
     );
