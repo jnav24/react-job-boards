@@ -1,9 +1,12 @@
+import { getAccessToken } from './auth';
+
 const endpoint = 'http://localhost:9000/graphql';
 
 const graphqlRequest = async (query, variables = {}) => {
     const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
+            'Authorization': `Bearer ${getAccessToken()}`,
             'content-type': 'application/json',
         },
         body: JSON.stringify({

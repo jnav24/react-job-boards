@@ -19,6 +19,7 @@ export default class JobForm extends Component {
             description: this.state.description,
             title: this.state.title,
         });
+        this.props.history.push('/');
         console.log('add new posting', this.state);
     };
 
