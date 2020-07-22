@@ -15,7 +15,6 @@ export default class JobForm extends Component {
     handleClick = (e) => {
         e.preventDefault();
         createJob({
-            companyId: "5d9df4b0b01527c99b96ea9f",
             description: this.state.description,
             title: this.state.title,
         });
