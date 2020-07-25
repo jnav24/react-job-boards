@@ -12,7 +12,7 @@ const JobBoard = () => {
     return (
         <div>
             <h1 className="title">Job Board</h1>
-            <JobList jobs={jobs}></JobList>
+            <JobList jobs={jobs} />
         </div>
     );
 };
