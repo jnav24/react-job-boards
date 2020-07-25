@@ -15,9 +15,12 @@ const auth = new ApolloLink((operation, forward) => {
     return forward(operation);
 });
 const client = new ApolloClient({
-    link: new HttpLink({
-        uri: endpoint,
-    }),
+    link: ApolloLink.from([
+        auth,
+        new HttpLink({
+            uri: endpoint,
+        }),
+    ]),
     cache: new InMemoryCache(),
 });
 
