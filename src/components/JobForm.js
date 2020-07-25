@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { createJob } from '../helpers/requests';
 
 export default class JobForm extends Component {
     state = {
@@ -13,6 +14,11 @@ export default class JobForm extends Component {
 
     handleClick = (e) => {
         e.preventDefault();
+        createJob({
+            description: this.state.description,
+            title: this.state.title,
+        });
+        this.props.history.push('/');
         console.log('add new posting', this.state);
     };
 

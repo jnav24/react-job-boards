@@ -1,22 +1,20 @@
 import React, { Component } from 'react';
+import { loadCompany } from '../helpers/requests';
+import JobList from './JobList';
 
 export default class CompanyDetail extends Component {
-    companyId = () => this.props.match.params;
-
     state = {
         company: {
             description: '',
             name: '',
+            jobs: [],
         },
     };
 
-    componentDidMount = () => {
+    componentDidMount = async () => {
+        const { companyId } = this.props.match.params;
         this.setState({
-            company: {
-                id: 'company1',
-                name: 'Company A',
-                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-            },
+            company: await loadCompany(companyId),
         });
     };
 
@@ -25,6 +23,7 @@ export default class CompanyDetail extends Component {
             <div>
                 <h1 className="title">{this.state.company.name}</h1>
                 <div className="box">{this.state.company.description}</div>
+                <JobList jobs={this.state.company.jobs} />
             </div>
         );
     }
