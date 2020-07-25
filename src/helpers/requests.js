@@ -33,7 +33,7 @@ export async function loadCompany(id) {
             }
         }
     }`;
-    // const { company } = await graphqlRequest(query, { id });
+
     const { data: { company } } = await client.query({ query, variables: { id } })
     return company;
 }
@@ -50,7 +50,7 @@ export async function createJob(input) {
             }
         }
     }`;
-    // const { job } = await graphqlRequest(query, { input });
+
     const { data: { job } } = await client.mutate({ mutation: query, variables: { input } });
     return job;
 }
@@ -67,7 +67,7 @@ export async function loadJobs() {
             }
         }
     }`;
-    // const { jobs } = await graphqlRequest(query);
+
     const { data: { jobs } } = await client.query({ query });
     return jobs;
 }
@@ -85,7 +85,7 @@ export async function loadJob(id) {
             }
         }
     }`;
-    // const { job } = await graphqlRequest(query, { id });
+
     const { data: { job } } = await client.query({ query, variables: { id } });
     return job;
 }
