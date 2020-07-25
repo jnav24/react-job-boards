@@ -12,9 +12,9 @@ export default class JobForm extends Component {
         this.setState({ [name]: value });
     };
 
-    handleClick = (e) => {
+    handleClick = async (e) => {
         e.preventDefault();
-        createJob({
+        await createJob({
             description: this.state.description,
             title: this.state.title,
         });
