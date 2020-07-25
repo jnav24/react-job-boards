@@ -22,7 +22,7 @@ const client = new ApolloClient({
 });
 
 const jobQuery = gql`
-    query JobQuery($id ID!) {
+    query JobQuery($id: ID!) {
         job(id: $id) {
             id
             title
