@@ -1,37 +1,25 @@
-import { ApolloClient, HttpLink, InMemoryCache } from 'apollo-boost';
+import { ApolloClient, ApolloLink, HttpLink, InMemoryCache } from 'apollo-boost';
 import gql from 'graphql-tag';
 import { getAccessToken, isLoggedIn } from './auth';
 
 const endpoint = 'http://localhost:9000/graphql';
+const auth = new ApolloLink((operation, forward) => {
+    if (isLoggedIn()) {
+        operation.setContext({
+            headers: {
+                'Authorization': `Bearer ${getAccessToken()}`,
+            },
+        });
+    }
+
+    return forward(operation);
+});
 const client = new ApolloClient({
     link: new HttpLink({
         uri: endpoint,
     }),
     cache: new InMemoryCache(),
 });
-
-const graphqlRequest = async (query, variables = {}) => {
-    const response = await fetch(endpoint, {
-        method: 'POST',
-        headers: {
-            'Authorization': `Bearer ${getAccessToken()}`,
-            'content-type': 'application/json',
-        },
-        body: JSON.stringify({
-            query,
-            variables,
-        }),
-    });
-
-    const { data, errors } = await response.json();
-
-    if (errors) {
-        const message = errors.map(error => error.message).join("\n");
-        throw new Error(message);
-    }
-
-    return data;
-};
 
 export async function loadCompany(id) {
     const query = gql`query CompanyQuery($id: ID!){
